@@ -12,8 +12,15 @@ const controls = [
 const IngredientsControl = ( props ) => {
 	return (
 		<div className={CSS.IC}>
+			<p>
+				Current Price: {props.totalPrice.toFixed(2)}
+			</p>
 				{
-					controls.map(ing => <IngredientControl key={ing.label} label={ing.label} add={() => props.addIngredient(ing.type)} remove={() => props.removeIngredient(ing.type)} />)
+					controls.map(ing => <IngredientControl key={ing.label} label={ing.label}
+													add={() => props.addIngredient(ing.type)}
+													remove={() => props.removeIngredient(ing.type)}
+													disableLess = {props.total[ing.type] < 1 ? true : false}
+													disableMore = {props.total[ing.type] > 2 ? true : false} />)
 				}
 		</div>
 	)
