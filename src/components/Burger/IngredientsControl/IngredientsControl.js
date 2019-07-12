@@ -13,7 +13,7 @@ const IngredientsControl = ( props ) => {
 	return (
 		<div className={CSS.IC}>
 			<p>
-				Current Price: {props.totalPrice.toFixed(2)}
+				Current Price: <strong>{props.totalPrice.toFixed(2)}</strong>
 			</p>
 				{
 					controls.map(ing => <IngredientControl key={ing.label} label={ing.label}
@@ -22,6 +22,7 @@ const IngredientsControl = ( props ) => {
 													disableLess = {props.total[ing.type] < 1 ? true : false}
 													disableMore = {props.total[ing.type] > 2 ? true : false} />)
 				}
+				<button className={CSS.OrderButton} disabled={props.totalPrice === 0}> ORDER NOW </button>
 		</div>
 	)
 }
