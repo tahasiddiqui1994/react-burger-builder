@@ -9,8 +9,8 @@ const styleLine = {
         padding: "0"
 } ;
 const OrderSummary = ( props ) => {
-    const ingredients = Object.keys(props.ingredients) .map(ing => {
-        return <li><span style={{textTransform: 'capitalize'}}>{ing}</span>: {props.ingredients[ing]}</li>
+    const ingredients = Object.keys(props.ingredients).map(ing => {
+        return <li key={ing}><span style={{textTransform: 'capitalize'}}>{ing}</span>: {props.ingredients[ing]}</li>
     }) ;
   return (
     <div>

@@ -16,7 +16,6 @@ const Burger = ( props ) => {
       return arr.concat(el)
     }, []) ;
 
-    console.log(middle)
     if(middle.length === 0) {
       middle = <p> Please start adding ingredients </p>
     }
