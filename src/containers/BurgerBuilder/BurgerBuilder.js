@@ -26,7 +26,8 @@ class BurgerBuilder extends Component {
 			bacon: 0,
 			meat: 0
 		},
-		totalPrice: 0
+		totalPrice: 0,
+		orderNow: false
 	}
 	
 	addIngredient = (type) => {
@@ -50,18 +51,36 @@ class BurgerBuilder extends Component {
 			ingredients: newIngredients
 		}) ;
 	}
+
+	orderNow = () => {
+		this.setState({
+			orderNow: true
+		}) ;
+	}
+	closeOrderNow = () => {
+		this.setState({
+			orderNow: false
+		}) ;
+	}
+	continueOrderNow = () => {
+		alert("CONTINUED !!!") ;
+	} ;
 	
 	render() {
 		return (
 			<Aux>
-				<Modal>
-					<OrderSummary ingredients={this.state.ingredients} />
+				<Modal show={this.state.orderNow} closeOrderNow={this.closeOrderNow}>
+					<OrderSummary ingredients={this.state.ingredients}
+						continueOrderNow={this.continueOrderNow}
+						closeOrderNow={this.closeOrderNow}
+						totalPrice={this.state.totalPrice}/>
 				</Modal>
 				<Burger ingredients={this.state.ingredients} />
 				<IngredientsControl addIngredient={this.addIngredient}
 					removeIngredient={this.removeIngredient}
 					total={this.state.ingredients}
-					totalPrice={this.state.totalPrice} />
+					totalPrice={this.state.totalPrice}
+					orderNow={this.orderNow} />
 			</Aux>
 		)
 	}

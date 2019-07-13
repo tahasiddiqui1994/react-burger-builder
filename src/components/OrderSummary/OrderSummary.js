@@ -1,13 +1,6 @@
-import React from 'react'
+import React from 'react' ;
+import Button from '../UI/Button/Button' ;
 
-const styleLine = {
-        display: "block",
-        height: "1px",
-        border: "0",
-        // border-top: "1px solid #ccc",
-        margin: "1em 0",
-        padding: "0"
-} ;
 const OrderSummary = ( props ) => {
     const ingredients = Object.keys(props.ingredients).map(ing => {
         return <li key={ing}><span style={{textTransform: 'capitalize'}}>{ing}</span>: {props.ingredients[ing]}</li>
@@ -19,9 +12,10 @@ const OrderSummary = ( props ) => {
       <ul>
         {ingredients}
       </ul>
-      <hr style={styleLine}/>
-      
+      <p>Total Price: {props.totalPrice.toFixed(2)}</p>
       <p> Continue to checkout ? </p>
+      <Button clicked={props.closeOrderNow} buttonType="Danger"> CANCEL ORDER </Button>
+      <Button clicked={props.continueOrderNow} buttonType="Success"> CONTINUE </Button>
     </div>
   )
 }

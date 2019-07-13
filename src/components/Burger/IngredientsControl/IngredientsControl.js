@@ -22,7 +22,7 @@ const IngredientsControl = ( props ) => {
 													disableLess = {props.total[ing.type] < 1 ? true : false}
 													disableMore = {props.total[ing.type] > 2 ? true : false} />)
 				}
-				<button className={CSS.OrderButton} disabled={props.totalPrice === 0}> ORDER NOW </button>
+				<button className={CSS.OrderButton} disabled={props.totalPrice === 0} onClick={props.orderNow}> ORDER NOW </button>
 		</div>
 	)
 }
