@@ -3,7 +3,7 @@ import CSS from './BackDrop.module.css' ;
 
 const BackDrop = ( props ) => {
   return (
-    props.show ? <div className={CSS.BackDrop} onClick={props.closeOrderNow}></div> : null
+    props.show ? <div className={CSS.BackDrop} onClick={props.clicked}></div> : null
   )
 }
 
