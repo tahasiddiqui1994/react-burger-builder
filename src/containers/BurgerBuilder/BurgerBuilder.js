@@ -4,6 +4,8 @@ import Burger from '../../components/Burger/Burger' ;
 import IngredientsControl from '../../components/Burger/IngredientsControl/IngredientsControl' ;
 import Modal from '../../components/UI/Modal/Modal' ;
 import OrderSummary from '../../components/OrderSummary/OrderSummary' ;
+import axios from '../../axios-orders' ;
+import Spinner from '../../components/UI/Spinner/Spinner' ;
 
 const INGREDIENT_PRICE = {
 	salad: 25,
@@ -27,7 +29,8 @@ class BurgerBuilder extends Component {
 			meat: 0
 		},
 		totalPrice: 0,
-		orderNow: false
+		orderNow: false,
+		loading: false
 	}
 	
 	addIngredient = (type) => {
@@ -63,17 +66,54 @@ class BurgerBuilder extends Component {
 		}) ;
 	}
 	continueOrderNow = () => {
-		alert("CONTINUED !!!") ;
+		// alert("CONTINUED !!!") ;
+		
+		this.setState({
+			loading: true
+		}) ;
+		const order = {
+			ingredients: this.state.ingredients,
+			price: this.state.totalPrice,
+			deliveryMethod: "fastest",
+			customer: {
+				name: "Taha",
+				address: "B-66 Gulshan-e-Rafi",
+				cellNo: "03032535638",
+			}
+		}
+		axios.post('/checkout.json', order)
+			.then(data =>{
+				console.log("Data: "+data) ;
+
+				this.setState({
+					loading: false,
+					orderNow: false
+				}) ;
+				// setTimeout(() => {
+				// 	this.setState({
+				// 		loading: false,
+				// 		orderNow: false
+				// 	}) ;
+				// }, 1000)
+			}).catch(error => {
+				console.log("Error: "+error) ;
+				this.setState({
+					loading: false,
+					orderNow: false
+				}) ;
+			}) ;
 	} ;
 	
 	render() {
 		return (
 			<Aux>
 				<Modal show={this.state.orderNow} closeOrderNow={this.closeOrderNow}>
-					<OrderSummary ingredients={this.state.ingredients}
+					{this.state.loading ? <Spinner /> : 
+						<OrderSummary ingredients={this.state.ingredients}
 						continueOrderNow={this.continueOrderNow}
 						closeOrderNow={this.closeOrderNow}
 						totalPrice={this.state.totalPrice}/>
+					}
 				</Modal>
 				<Burger ingredients={this.state.ingredients} />
 				<IngredientsControl addIngredient={this.addIngredient}
