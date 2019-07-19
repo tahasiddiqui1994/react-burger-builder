@@ -8,7 +8,6 @@ import axios from '../../axios-orders' ;
 import Spinner from '../../components/UI/Spinner/Spinner' ;
 import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler';
 // import { } from 'react-router-dom' ;
-
 const INGREDIENT_PRICE = {
 	salad: 25,
 	bacon: 80,
@@ -73,11 +72,13 @@ class BurgerBuilder extends Component {
 			orderNow: true
 		}) ;
 	}
+
 	closeOrderNow = () => {
 		this.setState({
 			orderNow: false
 		}) ;
 	}
+
 	continueOrderNow = () => {
 
 		// this.setState({
@@ -119,6 +120,7 @@ class BurgerBuilder extends Component {
 		for(let i in this.state.ingredients) {
 			params.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i])) ;
 		}
+		params.push('price='+ this.state.totalPrice) ;
 		this.props.history.push({
 			pathname: '/checkout',
 			search: '?'+params.join('&')
@@ -136,6 +138,7 @@ class BurgerBuilder extends Component {
 					total={this.state.ingredients}
 					totalPrice={this.state.totalPrice}
 					orderNow={this.orderNow} />
+					{/* <ContactData /> */}
 			</Aux> ;
 			orderSummary = <OrderSummary ingredients={this.state.ingredients}
 							continueOrderNow={this.continueOrderNow}
