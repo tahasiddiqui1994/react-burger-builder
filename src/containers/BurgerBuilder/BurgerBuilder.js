@@ -31,6 +31,7 @@ class BurgerBuilder extends Component {
 	}
 
     componentDidMount () {
+		// console.log(this.props)
         axios.get( '/ingredients.json' )
             .then( response => {
                 this.setState({
@@ -77,42 +78,43 @@ class BurgerBuilder extends Component {
 		}) ;
 	}
 	continueOrderNow = () => {
-		// alert("CONTINUED !!!") ;
-		
-		this.setState({
-			loading: true
-		}) ;
-		const order = {
-			ingredients: this.state.ingredients,
-			price: this.state.totalPrice,
-			deliveryMethod: "fastest",
-			customer: {
-				name: "Taha",
-				address: "B-66 Gulshan-e-Rafi",
-				cellNo: "03032535638",
-			}
-		}
-		axios.post('/checkout.json', order)
-			.then(data =>{
-				console.log("Data: "+data) ;
 
-				this.setState({
-					loading: false,
-					orderNow: false
-				}) ;
-				// setTimeout(() => {
-				// 	this.setState({
-				// 		loading: false,
-				// 		orderNow: false
-				// 	}) ;
-				// }, 1000)
-			}).catch(error => {
-				console.log("Error: "+error) ;
-				this.setState({
-					loading: false,
-					orderNow: false
-				}) ;
-			}) ;
+		// this.setState({
+		// 	loading: true
+		// }) ;
+		// const order = {
+		// 	ingredients: this.state.ingredients,
+		// 	price: this.state.totalPrice,
+		// 	deliveryMethod: "fastest",
+		// 	customer: {
+		// 		name: "Taha",
+		// 		address: "B-66 Gulshan-e-Rafi",
+		// 		cellNo: "03032535638",
+		// 	}
+		// }
+		// axios.post('/checkout.json', order)
+		// 	.then(data =>{
+		// 		console.log("Data: "+data) ;
+
+		// 		this.setState({
+		// 			loading: false,
+		// 			orderNow: false
+		// 		}) ;
+		// 		// setTimeout(() => {
+		// 		// 	this.setState({
+		// 		// 		loading: false,
+		// 		// 		orderNow: false
+		// 		// 	}) ;
+		// 		// }, 1000)
+		// 	}).catch(error => {
+		// 		console.log("Error: "+error) ;
+		// 		this.setState({
+		// 			loading: false,
+		// 			orderNow: false
+		// 		}) ;
+		// 	}) ;
+		console.log(this.props) ;
+		this.props.history.push('/checkout') ;
 	} ;
 	
 	render() {
