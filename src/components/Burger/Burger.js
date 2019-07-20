@@ -5,7 +5,7 @@ import Ingredients from './Ingredients/Ingredients' ;
 
 const Burger = ( props ) => {
   //let tt = 0 ;
-  console.log(props)
+  // console.log(props)
   let middle = Object.keys(props.ingredients)
     .map(ingredient => {
       return [...Array(props.ingredients[ingredient])].map((_, i) => {

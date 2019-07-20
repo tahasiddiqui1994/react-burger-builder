@@ -50,8 +50,8 @@ class ContactData extends Component {
 		}
 		axios.post('/checkout.json', order)
 			.then(data =>{
-				console.log("Data: ")
-				console.log(data) ;
+				// console.log("Data: ")
+				// console.log(data) ;
 
 				this.setState({
 					loading: false,
@@ -65,8 +65,8 @@ class ContactData extends Component {
 				// 	}) ;
 				// }, 1000)
 			}).catch(error => {
-				console.log("Error: ") ;
-				console.log(error) ;
+				// console.log("Error: ") ;
+				// console.log(error) ;
 				this.setState({
 					loading: false,
 				}) ;

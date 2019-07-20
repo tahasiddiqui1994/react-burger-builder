@@ -31,8 +31,8 @@ class Checkout extends Component {
     }
 
     continueOrder = () => {
-        console.log(this.props)
-        console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+        // console.log(this.props)
+        // console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
         this.props.history.replace('/checkout/contactdata') ;
     }
 
