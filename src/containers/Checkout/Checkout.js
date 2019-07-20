@@ -33,7 +33,7 @@ class Checkout extends Component {
     continueOrder = () => {
         console.log(this.props)
         console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
-        this.props.history.replace('/checkout/contact-data') ;
+        this.props.history.replace('/checkout/contactdata') ;
     }
 
     render() {
@@ -43,9 +43,9 @@ class Checkout extends Component {
                 cancelOrder={this.cancelOrder}
                 continueOrderNow={this.continueOrder}
                 ingredients={this.state.ingredients} />
-            <ContactData ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} {...this.props} />
+            {/* <ContactData ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} {...this.props} /> */}
             {/*2nd method to access Routing members that is history match etc to export the component by wrapping it HOC withRouter from react-router-dom*/}
-            {/* <Route path={this.props.match.path+'/contact-data'} render={(props) =>( <ContactData ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} {...props} /> )}/> */}
+            <Route path={this.props.match.path+'/contactdata'} render={(props) =>( <ContactData ingredients={this.state.ingredients} totalPrice={this.state.totalPrice} {...props} /> )}/>
         </div>
         )
     }

@@ -6,16 +6,16 @@ import axios from '../../axios-orders' ;
 
 class ContactData extends Component {
 
-	// constructor(props) {
-	// 	super(props)
+	constructor(props) {
+		super(props)
 		
-	// 	this.nameInput = React.createRef() ;
-	// 	this.emailInput = React.createRef() ;
-	// 	this.streetInput = React.createRef() ;
-	// 	this.cellNoInput = React.createRef() ;
-	// 	this.postalCodeInput = React.createRef() ;
-	// 	this.deliveryMethodInput = React.createRef() ;
-	// }
+		this.nameInput = React.createRef() ;
+		this.emailInput = React.createRef() ;
+		this.streetInput = React.createRef() ;
+		this.cellNoInput = React.createRef() ;
+		this.postalCodeInput = React.createRef() ;
+		this.deliveryMethodInput = React.createRef() ;
+	}
 	
     state = {
 		name: '',

@@ -6,7 +6,7 @@ import Button from '../UI/Button/Button' ;
 const CheckoutSummary = ( props ) => {
   return (
     <div className={CSS.CheckoutSummary}>
-      <h1> Your Burger. </h1>
+      <h1> Your Burger! </h1>
       <div style={{width: "100%", margin: "auto"}}>
         <Burger ingredients={props.ingredients} />
       </div>
