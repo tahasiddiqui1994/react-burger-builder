@@ -4,10 +4,10 @@ import Order from './Order/Order' ;
 
 class MyOrders extends Component {
     render() {
+        // axios.get(/)
         return (
         <div>
-            <Order />
-            <Order />
+
         </div>
         )
     }

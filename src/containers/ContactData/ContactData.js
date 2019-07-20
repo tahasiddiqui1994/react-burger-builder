@@ -30,8 +30,8 @@ class ContactData extends Component {
 	}
 
 	orderNow = () => {
-		console.log("OOOOOOOOOOOOOOOOOOOOOOO") ;
-		console.log(this.streetInput, this.nameInput, this.emailInput) ;
+		// console.log("OOOOOOOOOOOOOOOOOOOOOOO") ;
+		// console.log(this.streetInput.current.value, this.nameInput.current.value, this.emailInput.current.value) ;
 		this.setState({
 			loading: true
 		}) ;
@@ -39,12 +39,13 @@ class ContactData extends Component {
 		const order = {
 			ingredients: this.props.ingredients,
 			price: this.props.totalPrice,
-			deliveryMethod: "fastest",
+			deliveryMethod: this.deliveryMethodInput.current.value,
 			customer: {
-				name: "Taha",
-				email: "taha_siddiqui1994@yahoo.com",
-				address: "B-66 Gulshan-e-Rafi",
-				cellNo: "03032535638",
+				name: this.nameInput.current.value,
+				email: this.emailInput.current.value,
+				street: this.streetInput.current.value,
+				postalCode: this.postalCodeInput.current.value,
+				cellNo: this.cellNoInput.current.value,
 			}
 		}
 		axios.post('/checkout.json', order)
@@ -81,7 +82,7 @@ class ContactData extends Component {
 				<input ref={this.nameInput} className={CSS.Input} type="text" name="name" placeholder="Name"/>
 				<input ref={this.emailInput} className={CSS.Input} type="email" name="email" placeholder="Email"/>
 				<input ref={this.streetInput} className={CSS.Input} type="text" name="street" placeholder="Street"/>
-				<input ref={this.postalInput} className={CSS.Input} type="text" name="postal" placeholder="Postal Code"/>
+				<input ref={this.postalCodeInput} className={CSS.Input} type="text" name="postal" placeholder="Postal Code"/>
 				<input ref={this.cellNoInput} className={CSS.Input} type="text" name="cellNo" placeholder="Cell No"/>
 				<select ref={this.deliveryMethodInput} className={CSS.Input} >
 					<option value="standard">Standard</option>
